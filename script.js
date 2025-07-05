@@ -29,6 +29,9 @@ document.getElementById("fecharFormulario").addEventListener("click", () => {
   document.getElementById("formularioRFQ").style.display = "none";
 });
 
+// ===================
+// Submeter formulário e gerar cards
+// ===================
 document.getElementById("rfqForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -43,7 +46,13 @@ document.getElementById("rfqForm").addEventListener("submit", function (e) {
     `<div class="cards">
       <h2>${f.nome}</h2>
       <p>${f.email}</p>
-      <button class="btnCotacao" data-nome="${f.nome}" data-email="${f.email}" data-descricao="${descricao}" data-quantidade="${quantidade}" data-orcamento="${orcamento}" data-categoria="${categoria}">
+      <button type="button" class="btnCotacao"
+        data-nome="${f.nome}"
+        data-email="${f.email}"
+        data-descricao="${descricao}"
+        data-quantidade="${quantidade}"
+        data-orcamento="${orcamento}"
+        data-categoria="${categoria}">
         Solicitar cotação
       </button>
     </div>`
@@ -53,32 +62,27 @@ document.getElementById("rfqForm").addEventListener("submit", function (e) {
   container.innerHTML = cardsHTML;
   container.scrollIntoView({ behavior: "smooth" });
 
-  // Fecha o formulário
   document.getElementById("formularioRFQ").style.display = "none";
 
   // Ativa o evento de clique para cada botão de cotação
   document.querySelectorAll(".btnCotacao").forEach(botao => {
     botao.addEventListener("click", function () {
-      const dados = {
-        descricao: this.dataset.descricao,
-        quantidade: this.dataset.quantidade,
-        orcamento: this.dataset.orcamento,
-        categoria: this.dataset.categoria,
-        fornecedor: this.dataset.nome,
-        emailFornecedor: this.dataset.email
-      };
+      const formData = new URLSearchParams();
+      formData.append("descricao", this.dataset.descricao);
+      formData.append("quantidade", this.dataset.quantidade);
+      formData.append("orcamento", this.dataset.orcamento);
+      formData.append("categoria", this.dataset.categoria);
+      formData.append("fornecedor", this.dataset.nome);
+      formData.append("emailFornecedor", this.dataset.email);
 
       fetch('https://script.google.com/macros/s/AKfycbzuvvhDf94oWRkFdLVy1KpjB85ZbXyFx-RLif9_79zytRDyk4R96TGxDByPk1A4aJBlsQ/exec', {
         method: 'POST',
-        body: JSON.stringify(dados),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        body: formData
       })
       .then(res => res.text())
       .then(resp => {
         console.log("Cotação enviada:", resp);
-        alert(`Cotação solicitada para ${dados.fornecedor} com sucesso! ✅`);
+        alert(`Cotação solicitada para ${formData.get("fornecedor")} com sucesso! ✅`);
       })
       .catch(err => {
         console.error("Erro ao enviar:", err);
