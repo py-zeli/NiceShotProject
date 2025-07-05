@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Nice Shot</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="header">
+    <!-- Área esquerda: logo neon -->
+        <div class="header-left">
+            <img src="/nice-shot project/arquivos/neon.png" class="header-logo-neon" />
+        </div>
+
+        <!-- Centro: logo + título -->
+        <div class="header-center">
+            <img src="/nice-shot project/arquivos/niceshot-logo-branco.png" alt="Logo" class="header-logo" />
+            <h1 class="header-title">Nice Shot!</h1>
+        </div>
+    </div>
+
+
+
+    <div class="sidebar">
+    <button class="sidebar-btn" id="abrirFormulario">Iniciar RFQ</button>
+    <button class="sidebar-btn" id="btnAcompanhar">Acompanhar RFQs</button>
+    <button class="sidebar-btn" id="btnDashboard">Dashboard</button>
+    </div>
+
+
+  <div class="main">
+    <div id="formularioRFQ" class="formulario">
+        <button id="fecharFormulario" class="fechar" type="close">×</button>
+        <h2>Nova RFQ</h2>
+        <form id="rfqForm">
+            <input type="text" placeholder="Descrição do item" name="descricao" required />
+            <input type="number" placeholder="Quantidade" name="quantidade" required />
+            <input type="number" placeholder="Orçamento (R$)" name="orcamento" required />
+            <select name="categoria" required>
+            <option value="ME01">Material de Escritório</option>
+            <option value="ITSN">Serviços de TI</option>
+            </select>
+            <button type="submit">Submeter</button>
+        </form>
+    </div>
+
+
+    <div id="resultadoCards"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
