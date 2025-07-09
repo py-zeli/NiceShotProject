@@ -1,13 +1,4 @@
 // ===================
-// Base de fornecedores (mock)
-// ===================
-const fornecedores = [
-  { nome: "Fornecedor XPTO", categoria: "ME01", email: "xpto@empresa.com" },
-  { nome: "Tech Cloud", categoria: "ITSN", email: "cloud@empresa.com" },
-  { nome: "Papel & Cia", categoria: "ME01", email: "contato@papelcia.com" }
-];
-
-// ===================
 // Sidebar Accordion (caso ainda use)
 // ===================
 document.querySelectorAll(".accordion").forEach((button) => {
