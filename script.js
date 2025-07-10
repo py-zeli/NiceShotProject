@@ -25,6 +25,7 @@ document.getElementById("fecharFormulario").addEventListener("click", () => {
 // ===================
 document.getElementById("rfqForm").addEventListener("submit", function (e) {
   e.preventDefault();
+  // 
 
   const descricao = this.descricao.value;
   const quantidade = this.quantidade.value;
