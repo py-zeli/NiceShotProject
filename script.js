@@ -25,7 +25,6 @@ document.getElementById("fecharFormulario").addEventListener("click", () => {
 // ===================
 document.getElementById("rfqForm").addEventListener("submit", function (e) {
   e.preventDefault();
-  // 
 
   const descricao = this.descricao.value;
   const quantidade = this.quantidade.value;
@@ -90,7 +89,6 @@ document.getElementById("rfqForm").addEventListener("submit", function (e) {
     })
     .catch(err => {
       console.error("Erro ao buscar fornecedores:", err);
-      console.dir(err); // Mostra detalhes
       alert("Erro ao carregar fornecedores. 😢");
     });
 });
