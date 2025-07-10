@@ -1,3 +1,28 @@
+// ===================
+// Sidebar Accordion (caso ainda use)
+// ===================
+document.querySelectorAll(".accordion").forEach((button) => {
+  button.addEventListener("click", function () {
+    this.classList.toggle("active");
+    const panel = this.nextElementSibling;
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
+  });
+});
+
+// ===================
+// Abrir e fechar formulário
+// ===================
+document.getElementById("abrirFormulario").addEventListener("click", () => {
+  document.getElementById("formularioRFQ").style.display = "block";
+});
+
+document.getElementById("fecharFormulario").addEventListener("click", () => {
+  document.getElementById("formularioRFQ").style.display = "none";
+});
+
+// ===================
+// Submeter formulário e gerar cards dinamicamente
+// ===================
 document.getElementById("rfqForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
